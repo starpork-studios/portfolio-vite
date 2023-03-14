@@ -36,29 +36,27 @@ function Home() {
   return (
     <Canvas
       camera={{
-        position: [0, 40, 60], //change to y = 10 for horizontal
+        position: [-10, 20, -20], //change to y = 10 for horizontal
         fov: 45,
         aspect: 1.5,
-        rotation: [offsetBlock, 0, -Math.PI / 48], //change to x = -Math.PI / 12for vertical
+
+        rotation: [-offsetBlock / 1.2, 0, -Math.PI / 48], // need to adjust x when adding more photos
       }}
     >
       <Rig />
-      <ScrollControls damping={0.3} pages={4}>
+      <ScrollControls damping={0.3} pages={2} /* 1 page per photo*/>
         <>
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <CarouselVertical
             cyclinderData={[
               { file: "lmi2.png", onSetHover: () => {}, hover: false },
-              { file: "lmi.png", onSetHover: () => {}, hover: false },
-              { file: "lmi3.jpeg", onSetHover: () => {}, hover: false },
-              { file: "lmi4.jpeg", onSetHover: () => {}, hover: false },
+              { file: "ss2.png", onSetHover: () => {}, hover: false },
             ]}
           />
         </>
         <Scroll html>
           <div className="w-screen">
-            <SectionControls navigate={navigate} />
             <SectionControls navigate={navigate} />
             <SectionControls navigate={navigate} />
           </div>

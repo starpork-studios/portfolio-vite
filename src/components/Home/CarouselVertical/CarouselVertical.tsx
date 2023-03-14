@@ -34,9 +34,10 @@ export function CarouselVertical(props: CarouselProps) {
     //const f = data.visible(2 / 3, 1 / 3);
     // The visible function can also receive a margin
     //const g = data.visible(2 / 3, 1 / 3, 0.1);
-    const pastFirstThirdProgress = data.range(1 / 3, 1);
+    const pastFirstHalfProgress = data.range(0, 1 / 2);
 
-    group.current.rotation.x = data.offset * segmentRotate(3, 0);
+    // need to adjust this adding more photos
+    group.current.rotation.x = (data.offset / 3) * segmentRotate(3, 0);
   });
 
   // Return view, these are regular three.js elements expressed in JSX
