@@ -25,10 +25,7 @@ export function Rig() {
   const { camera, mouse } = useThree();
   const vec = new Vector3(0, 0, 0);
   return useFrame(() => {
-    camera.position.lerp(
-      vec.set(mouse.x * 1, mouse.y * 0.5, camera.position.z),
-      0.08
-    );
+    camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.5, 0), 0.07);
   });
 }
 function Home() {
@@ -39,7 +36,7 @@ function Home() {
   return (
     <Canvas
       camera={{
-        position: [0, 0, 0], //change to y = 10 for horizontal
+        position: [0, 40, 60], //change to y = 10 for horizontal
         fov: 45,
         aspect: 1.5,
         rotation: [offsetBlock, 0, -Math.PI / 48], //change to x = -Math.PI / 12for vertical
@@ -52,8 +49,8 @@ function Home() {
           <pointLight position={[10, 10, 10]} />
           <CarouselVertical
             cyclinderData={[
-              { file: "lmi.png", onSetHover: () => {}, hover: false },
               { file: "lmi2.png", onSetHover: () => {}, hover: false },
+              { file: "lmi.png", onSetHover: () => {}, hover: false },
               { file: "lmi3.jpeg", onSetHover: () => {}, hover: false },
               { file: "lmi4.jpeg", onSetHover: () => {}, hover: false },
             ]}
@@ -61,66 +58,8 @@ function Home() {
         </>
         <Scroll html>
           <div className="w-screen">
-            <section className={`h-screen flex flex-col justify-center p-10`}>
-              <button onClick={() => setX(400)} className=" text-white">
-                move!
-              </button>
-              <button
-                onClick={() => navigate("work-1")}
-                className=" text-white"
-              >
-                Work
-              </button>
-              <div className=" flex justify-center items-center ">
-                <motion.h1
-                  className="text-3xl font-bold text-red-500 underline "
-                  initial={{ y: -400, x: -400, opacity: 0 }}
-                  animate={{
-                    y: 0,
-                    x,
-                    opacity: 1,
-                    transition: {
-                      duration: 4,
-                      type: "spring",
-                      stiffness: 50,
-                    },
-                  }}
-                >
-                  Hello World!
-                </motion.h1>
-                <h1 className=" text-white">Hi There</h1>
-              </div>
-            </section>
-            <section className={`h-screen flex flex-col justify-center p-10`}>
-              <button onClick={() => setX(400)} className=" text-white">
-                move!
-              </button>
-              <button
-                onClick={() => navigate("work-1")}
-                className=" text-white"
-              >
-                Work
-              </button>
-              <div className=" flex justify-center items-center ">
-                <motion.h1
-                  className="text-3xl font-bold text-red-500 underline "
-                  initial={{ y: -400, x: -400, opacity: 0 }}
-                  animate={{
-                    y: 0,
-                    x,
-                    opacity: 1,
-                    transition: {
-                      duration: 4,
-                      type: "spring",
-                      stiffness: 50,
-                    },
-                  }}
-                >
-                  Hello World!
-                </motion.h1>
-                <h1 className=" text-white">Hi There</h1>
-              </div>
-            </section>
+            <SectionControls navigate={navigate} />
+            <SectionControls navigate={navigate} />
             <SectionControls navigate={navigate} />
           </div>
         </Scroll>

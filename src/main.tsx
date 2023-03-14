@@ -11,7 +11,12 @@ import Nav from "./components/Nav/Nav";
 const router = createBrowserRouter([
   {
     path: BASE,
-    element: <Home />,
+    element: (
+      <>
+        <Nav />
+        <Home />
+      </>
+    ),
   },
   {
     path: `${BASE}${WORK_1}`,
@@ -25,7 +30,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Nav />
     <Noise />
     <RouterProvider router={router} />
   </React.StrictMode>

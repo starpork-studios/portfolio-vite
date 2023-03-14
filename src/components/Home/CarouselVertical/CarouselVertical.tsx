@@ -9,7 +9,7 @@ export function CarouselVertical(props: CarouselProps) {
   const segmentRotate = (order: number, initial: number) => {
     if (order === 0) return initial;
 
-    return initial + ((2 * Math.PI) / 6) * (order * 0.8);
+    return initial + ((2 * Math.PI) / 6.5) * (order * 0.8);
   };
   // This reference will give us direct access to the mesh
   const group = useRef<Group>(null!);
@@ -48,7 +48,7 @@ export function CarouselVertical(props: CarouselProps) {
         .map((data, index) => (
           <CylinderImage
             rotation={[
-              segmentRotate(index, Math.PI / 2.15),
+              segmentRotate(index, Math.PI / 1.9),
               Math.PI / 7,
               Math.PI,
             ]}
