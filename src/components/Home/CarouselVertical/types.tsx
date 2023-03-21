@@ -1,11 +1,10 @@
 import { GroupProps, MeshProps } from "@react-three/fiber";
+import { WorkData } from "../workdata";
 
 export interface MeshImageProps extends MeshProps {
   file: string;
-  onSetHover: () => void;
-  hover: boolean;
 }
 
 export interface CarouselProps extends GroupProps {
-  cyclinderData: MeshImageProps[];
+  cyclinderData: WorkData;
 }
