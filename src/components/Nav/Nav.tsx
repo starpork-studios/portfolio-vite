@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Nav: React.FC = () => {
   return (
-    <nav className=" fixed  w-full  z-10">
+    <nav className=" fixed  w-full  z-10 pointer-events-none">
       <div className="flex flex-col mb-10 mt-10 ml-12 mr-12">
         <motion.hr
           initial={{ width: 0 }}
@@ -30,7 +30,7 @@ const Nav: React.FC = () => {
             <p>Software Engineer</p>
           </motion.div>
           <div className="flex flex-row gap-4">
-            <Link to="/">
+            <Link to="/" className=" pointer-events-auto">
               <motion.p
                 initial={{ y: -5, opacity: 0 }}
                 animate={{
@@ -47,7 +47,7 @@ const Nav: React.FC = () => {
                 Home
               </motion.p>
             </Link>
-            <Link to="/about">
+            <Link to="/about" className=" pointer-events-auto">
               <motion.p
                 initial={{ y: -5, opacity: 0 }}
                 animate={{
