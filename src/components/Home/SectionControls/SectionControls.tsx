@@ -1,16 +1,60 @@
+import { useScroll } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { forwardRef, RefObject, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { Group } from "three";
+import { ZoomedProps } from "../types";
+import { WorkItem } from "../workdata";
 
-const SectionControls: React.FC<{ navigate: NavigateFunction }> = ({
+type SectionProps = {
+  navigate: NavigateFunction;
+  setZoomed: React.Dispatch<React.SetStateAction<ZoomedProps>>;
+  data: WorkItem;
+  index: number;
+  carouselRef: React.MutableRefObject<Group>;
+  sectionRef: RefObject<HTMLElement>;
+};
+
+const SectionControls: React.FC<SectionProps> = ({
   navigate,
+  setZoomed,
+  data,
+  index,
+  carouselRef,
+  sectionRef,
 }) => {
   const [x, setX] = useState(0);
+  const scroll = useScroll();
 
   return (
-    <section className={`h-screen flex flex-col justify-center p-10`}>
+    <section
+      className={`h-screen flex flex-col justify-center p-10`}
+      ref={sectionRef}
+    >
       <button onClick={() => setX(400)} className=" text-white">
         move!
+      </button>
+      <button
+        onClick={() => {
+          setZoomed((zoomed) => {
+            if (zoomed.isZoomed)
+              return {
+                isZoomed: !zoomed.isZoomed,
+                page: -1,
+                previous: zoomed.page,
+              };
+
+            return {
+              isZoomed: !zoomed.isZoomed,
+              page: index,
+              previous: -1,
+            };
+          });
+        }}
+        className=" text-white"
+      >
+        {`Zoom ${data.title}`}
       </button>
       <button onClick={() => navigate("work-1")} className=" text-white">
         Work
