@@ -2,12 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Hatton-Bold";
+    src: url("/fonts/PPHatton-Bold.otf");
+  }
+  @font-face {
+    font-family: "Hatton-Medium";
+    src: url("/fonts/PPHatton-Medium.otf");
+  }
+  @font-face {
+    font-family: "Hatton-Ultralight";
+    src: url("/fonts/PPHatton-Ultralight.otf");
+  }
+}
+
+@layer components {
+  .work-heading {
+    @apply lg:text-8xl md:text-7xl sm:text-5xl text-3xl font-bold font-heading;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
 #root {
   width: 100vw;
   height: 100vh;
   background-color: black;
 }
-
 
 .fadeIn {
   animation: 0.5s fadeIn forwards;

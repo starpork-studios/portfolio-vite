@@ -8,7 +8,6 @@ import { images } from "../workdata";
 const ROTATION_CONSTANT = 0.8;
 
 export function CarouselVertical(props: CarouselProps) {
-  const [returningToStart, setReturningToStart] = useState<boolean>(false);
   const segmentRotate = (order: number, initial: number) => {
     if (order === 0) return initial;
     return initial - order * ROTATION_CONSTANT;
@@ -140,6 +139,23 @@ export function CarouselVertical(props: CarouselProps) {
     //innerHeight + sectionHeight
   });
 
+  const onSelectWork = (index: number) => {
+    props.setZoomed((zoomed) => {
+      if (zoomed.isZoomed)
+        return {
+          isZoomed: !zoomed.isZoomed,
+          page: -1,
+          previous: zoomed.page,
+        };
+
+      return {
+        isZoomed: !zoomed.isZoomed,
+        page: index,
+        previous: -1,
+      };
+    });
+  };
+
   // Return view, these are regular three.js elements expressed in JSX
   return (
     <group
@@ -152,6 +168,8 @@ export function CarouselVertical(props: CarouselProps) {
           rotation={[segmentRotate(index, 0), Math.PI / 7, Math.PI]}
           file={data.file}
           key={`image-${index}`}
+          isOpen={props.zoomed.isZoomed}
+          onClick={() => onSelectWork(index)}
         />
       ))}
     </group>

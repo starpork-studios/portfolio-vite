@@ -1,6 +1,6 @@
 import { MeshDistortMaterial, PointerLockControls } from "@react-three/drei";
 import { MeshProps, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CylinderGeometry,
   DoubleSide,
@@ -20,7 +20,6 @@ export function CylinderImage(props: MeshImageProps) {
   // This reference will give us direct access to the mesh
   const mesh = useRef<Mesh>(null!);
   const bufferGeometry = useRef<CylinderGeometry>(null!);
-  const distortRef = useRef<typeof MeshDistortMaterial>(null!);
   const colorMap = useLoader(TextureLoader, props.file);
   // Subscribe this component to the render-loop, rotate the mesh every frame
   // Return view, these are regular three.js elements expressed in JSX
@@ -34,6 +33,14 @@ export function CylinderImage(props: MeshImageProps) {
     distort,
     hover
   );
+
+  useEffect(() => {
+    setHover(false);
+  }, [props.isOpen]);
+
+  useEffect(() => {
+    document.body.style.cursor = hover && !props.isOpen ? "pointer" : "auto";
+  }, [hover, props.isOpen]);
 
   // Detect pointer leaving the mesh
 

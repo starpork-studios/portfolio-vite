@@ -15,6 +15,7 @@ import { motion, useScroll } from "framer-motion";
 export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
   const { camera, mouse } = useThree();
   const vec = new Vector3(0, 0, 0);
+
   return useFrame(() => {
     const z = camera.rotation.z;
     const x = camera.rotation.x;
@@ -51,11 +52,11 @@ function Home() {
   const navigate = useNavigate();
 
   return (
-    <motion.div className="w-full h-full overflow-auto">
+    <motion.div className="w-full h-full overflow-auto ">
       <Canvas
         camera={{
           position: [-10, -90, -60], //change to y = 10 for horizontal
-          fov: 45,
+          fov: 40,
           aspect: 1.5,
 
           rotation: [Math.PI, 0, -Math.PI / 48], // need to adjust x when adding more photos
@@ -73,6 +74,7 @@ function Home() {
             <CarouselVertical
               cyclinderData={images}
               zoomed={zoomed}
+              setZoomed={setZoomed}
               carouselRef={carouselRef}
               sectionRefs={sectionRefs}
             />

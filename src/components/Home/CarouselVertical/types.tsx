@@ -6,11 +6,13 @@ import { WorkData } from "../workdata";
 
 export interface MeshImageProps extends MeshProps {
   file: string;
+  isOpen: boolean;
 }
 
 export interface CarouselProps extends GroupProps {
   cyclinderData: WorkData;
   zoomed: ZoomedProps;
+  setZoomed: React.Dispatch<React.SetStateAction<ZoomedProps>>;
   carouselRef: React.MutableRefObject<Group>;
   sectionRefs: React.MutableRefObject<RefObject<HTMLElement>[]>;
 }

@@ -32,36 +32,9 @@ const SectionControls: React.FC<SectionProps> = ({
       className={`h-screen flex flex-col justify-center p-10`}
       ref={sectionRef}
     >
-      <button onClick={() => setX(400)} className=" text-white">
-        move!
-      </button>
-      <button
-        onClick={() => {
-          setZoomed((zoomed) => {
-            if (zoomed.isZoomed)
-              return {
-                isZoomed: !zoomed.isZoomed,
-                page: -1,
-                previous: zoomed.page,
-              };
-
-            return {
-              isZoomed: !zoomed.isZoomed,
-              page: index,
-              previous: -1,
-            };
-          });
-        }}
-        className=" text-white"
-      >
-        {`Zoom ${data.title}`}
-      </button>
-      <button onClick={() => navigate("work-1")} className=" text-white">
-        Work
-      </button>
-      <div className=" flex justify-center items-center ">
+      <div className=" flex justify-center items-center  pointer-events-none">
         <motion.h1
-          className="text-3xl font-bold text-red-500 underline "
+          className="text-9xl text-white font-hatton  "
           initial={{ y: -400, x: -400, opacity: 0 }}
           animate={{
             y: 0,
@@ -74,9 +47,8 @@ const SectionControls: React.FC<SectionProps> = ({
             },
           }}
         >
-          Hello World!
+          {data.title}{" "}
         </motion.h1>
-        <h1 className=" text-white">Hi There</h1>
       </div>
     </section>
   );
