@@ -5,6 +5,8 @@ module.exports = {
     fontFamily: {
       
       'body': ["Helvetica Neue"],
+      'heading': ["Helvetica Neue"],
+      'hatton' : ["Hatton-Medium"]
     },
     extend: {}
   },

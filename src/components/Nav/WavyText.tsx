@@ -1,5 +1,11 @@
-import { FC } from "react";
-import { motion, Variants, HTMLMotionProps } from "framer-motion";
+import { FC, useEffect, useRef } from "react";
+import {
+  motion,
+  Variants,
+  HTMLMotionProps,
+  useAnimation,
+  useInView,
+} from "framer-motion";
 
 interface Props extends HTMLMotionProps<"div"> {
   text: string;
@@ -39,7 +45,7 @@ const WavyText: FC<Props> = ({
     },
     hidden: {
       opacity: 0,
-      y: -5,
+      y: -35,
       transition: {
         type: "spring",
         damping: 12,
@@ -48,12 +54,22 @@ const WavyText: FC<Props> = ({
     },
   };
 
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [controls, isInView]);
+
   return (
     <motion.p
+      ref={ref}
       style={{ display: "flex", overflow: "hidden" }}
       variants={container}
       initial="hidden"
-      animate={replay ? "visible" : "hidden"}
+      animate={controls}
       {...props}
     >
       {letters.map((letter, index) => (

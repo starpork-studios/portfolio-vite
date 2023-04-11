@@ -2,6 +2,9 @@ import { motion, useScroll } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { ZoomedProps } from "../types";
 import { WorkItem } from "../workdata";
+import Heading from "./Heading";
+import Info from "./Info";
+import ScrollIndictator from "./ScrollIndictator";
 
 const Work: React.FC<{
   item: WorkItem;
@@ -9,13 +12,17 @@ const Work: React.FC<{
   setZoomed: React.Dispatch<React.SetStateAction<ZoomedProps>>;
   index: number;
 }> = ({ zoomed, setZoomed, item, index }) => {
-  const { scrollYProgress } = useScroll();
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const [showScrollHint, setShowScrollHint] = useState<boolean>(true);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
+
+      if (scrollPosition > 80) {
+        setShowScrollHint(false);
+      } else setShowScrollHint(true);
 
       if (scrollPosition === 0 && isScrolling) {
         setIsScrolling(false);
@@ -35,42 +42,43 @@ const Work: React.FC<{
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isScrolling]);
+
+  const goBack = () => {
+    if (window.scrollY === 0) {
+      setZoomed({
+        isZoomed: false,
+        page: -1,
+        previous: -1,
+      });
+      return;
+    }
+    setIsScrolling(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    //ref.current?.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   if (zoomed.page != index) return <></>;
 
   return (
-    <motion.div className="h-full w-full  absolute top-0 " ref={ref}>
-      <p>WorkItem {zoomed.page}</p>
+    <>
+      <ScrollIndictator isVisible={showScrollHint} />
+      <motion.div
+        className="h-full w-full  absolute top-0 "
+        onClick={goBack}
+        ref={ref}
+      >
+        <div>
+          <div className=" bg-gray-200 mt-[100vh]  px-[60px] pt-[90px] pb-[120px]">
+            <Heading workItem={item} />
+            <Info workItem={item} />
 
-      <div>
-        <div className=" h-96 bg-green-600 mt-[100vh]">
-          Section 4<p className=" text-cyan-100">{scrollYProgress.get()}</p>
+            <button className="bg-blue-600" onClick={goBack}>
+              Go Back
+            </button>
+          </div>
         </div>
-
-        <div className=" h-96 bg-yellow-600">Section 5</div>
-        <button
-          className="bg-blue-600"
-          onClick={() => {
-            setIsScrolling(true);
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            //ref.current?.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-        >
-          Go Back
-        </button>
-        <motion.p
-          className="text-white"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-        >
-          blah bah cbwhjshsd blah bah cbwhjshsd blah bah cbwhjshsd blah bah
-          cbwhjshsd blah bah cbwhjshsd blah bah cbwhjshsd blah bah cbwhjshsd
-          blah bah cbwhjshsd blah bah cbwhjshsd blah bah cbwhjshsd blah bah
-          cbwhjshsd blah bah cbwhjshsd blah bah cbwhjshsd blah bah cbwhjshsd
-          blah bah cbwhjshsd blah bah cbwhjshsd blah bah cbwhjshsd
-        </motion.p>
-        <div className=" h-96 bg-pink-600">Section 6</div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 
