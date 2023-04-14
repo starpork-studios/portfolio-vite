@@ -14,7 +14,7 @@ const Info: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
         {workItem.page?.paragraph}
         <img
           src={workItem.page?.image}
-          className="mt-[80px] ml-auto lg:max-w-[980px]"
+          className="mt-[80px] ml-auto lg:max-w-[1280px]"
         />
       </div>
     </motion.div>
