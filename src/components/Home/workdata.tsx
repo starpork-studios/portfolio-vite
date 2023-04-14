@@ -11,24 +11,26 @@ export const images = [
       year: "2022-23",
       image: "lmi2.png",
       paragraph: (
-        <div className="flex flex-row gap-8 font-body">
-          <p className="flex-1">
+        <div className="font-body font-light w-full justify-between text-lg gap-4 flex flex-col md:flex-row">
+          <ul className="flex flex-col justify-between max-h-[250px]  md:w-[350px]">
+            <li>Developing UI components.</li>
+            <li>Engineering code architecture.</li>
+            <li>Creating end-to-end and unit tests.</li>
+          </ul>
+          <p className="   md:w-[350px]">
+            I was a Frontend Engineer on this project forming a strong working
+            relationship with our client's multidisciplinary team. I worked
+            alongside designers, product managers, quality assurance and other
+            software engineers to collaboratively create and improve a product
+            that we're all proud of.
+          </p>
+
+          <p className="  md:w-[350px]">
             Les Mills Connect is a web app used by hundreds of thousands of
             users worldwide. Its purpose? to connect gyms with certified Les
             Mills instructors, operating as a 'one stop shop' for all instructor
             needs.
           </p>
-          <div className="flex-1 gap-4 flex flex-col ">
-            <p>
-              I was a Frontend Engineer on this project forming a strong working
-              relationship with our client's multidisciplinary team.
-            </p>
-            <ul>
-              <li>Developing UI components.</li>
-              <li>Engineering code architecture.</li>
-              <li>Creating end-to-end and unit tests.</li>
-            </ul>
-          </div>
         </div>
       ),
     },
