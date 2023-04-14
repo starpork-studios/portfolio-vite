@@ -1,10 +1,17 @@
-import { motion } from "framer-motion";
-import React, { CSSProperties } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import React, { CSSProperties, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Nav: React.FC = () => {
+  const { scrollY } = useScroll();
+
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   return (
-    <nav className=" fixed  w-full  z-10 pointer-events-none">
+    <motion.nav
+      className=" fixed  w-full  z-10 pointer-events-none"
+      style={{ opacity }}
+    >
       <div className="flex flex-col mb-10 mt-10 ml-12 mr-12">
         <motion.hr
           initial={{ width: 0 }}
@@ -68,7 +75,7 @@ const Nav: React.FC = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

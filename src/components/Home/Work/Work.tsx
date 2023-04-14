@@ -62,13 +62,10 @@ const Work: React.FC<{
   return (
     <>
       <ScrollIndictator isVisible={showScrollHint} />
-      <motion.div
-        className="h-full w-full  absolute top-0 "
-        onClick={goBack}
-        ref={ref}
-      >
-        <div>
-          <div className=" bg-gray-200 mt-[100vh]  px-[60px] pt-[90px] pb-[120px]">
+      <motion.div className="h-full w-full  absolute top-0 " ref={ref}>
+        <div className="h-full w-full" onClick={goBack}></div>
+        <div className=" bg-gray-200 flex justify-center align-middle">
+          <div className="px-[60px] pt-[90px] pb-[120px] w-full max-w-[1500px]">
             <Heading workItem={item} />
             <Info workItem={item} />
 

@@ -34,7 +34,7 @@ const SectionControls: React.FC<SectionProps> = ({
     >
       <div className=" flex justify-center items-center  pointer-events-none">
         <motion.h1
-          className="text-9xl text-white font-hatton  "
+          className="md:text-9xl sm:text-7xl text-5xl text-white font-hatton  "
           initial={{ y: -400, x: -400, opacity: 0 }}
           animate={{
             y: 0,

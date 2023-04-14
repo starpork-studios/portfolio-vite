@@ -13,7 +13,7 @@ const ScrollIndictator: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
       {isVisible && (
         <motion.button
           onClick={scrollDown}
-          className=" w-14 h-14 absolute z-[9999]   left-1/2 top-[calc(100vh-100px)]"
+          className=" w-14 h-14 absolute z-[9999]   left-[calc(50vw-1.75rem)] top-[calc(100vh-100px)]"
           animate={{
             opacity: [0, 1, 0],
             y: [-20, 0],

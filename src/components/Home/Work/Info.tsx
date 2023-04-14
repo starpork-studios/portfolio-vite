@@ -9,10 +9,14 @@ const Info: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.5, duration: 1 }}
-      className="pl-[340px]"
     >
-      {workItem.page?.paragraph}
-      <img src={workItem.page?.image} className="mt-[80px]" />
+      <div className="flex flex-col">
+        {workItem.page?.paragraph}
+        <img
+          src={workItem.page?.image}
+          className="mt-[80px] ml-auto lg:max-w-[1280px]"
+        />
+      </div>
     </motion.div>
   );
 };
