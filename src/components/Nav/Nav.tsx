@@ -12,12 +12,12 @@ const Nav: React.FC = () => {
       className=" fixed  w-full  z-10 pointer-events-none"
       style={{ opacity }}
     >
-      <div className="flex flex-col mb-10 mt-10 ml-12 mr-12">
+      <div className="flex flex-col mb-10 ml-[60px] mr-[60px] mt-[40px]">
         <motion.hr
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ delay: 1, duration: 1 }}
-          className="mb-4"
+          className="mb-4 mt-0"
         />
         <div className="flex flex-row justify-between  text-white  font-body font-light tracking-wider	leading-6">
           <motion.div

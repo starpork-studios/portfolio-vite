@@ -11,7 +11,7 @@ export const images = [
       year: "2022-23",
       image: "lmi2.png",
       paragraph: (
-        <div className="font-body font-light w-full justify-between text-lg gap-4 flex flex-col md:flex-row">
+        <div className="font-body font-light w-full justify-between text-lg gap-4 flex flex-col md:flex-row tracking-wider">
           <ul className="flex flex-col justify-between max-h-[250px]  md:w-[350px]">
             <li>Developing UI components.</li>
             <li>Engineering code architecture.</li>

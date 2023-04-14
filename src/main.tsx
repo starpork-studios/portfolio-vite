@@ -15,6 +15,8 @@ import Noise from "./components/Noise/Noise";
 import Nav from "./components/Nav/Nav";
 import { motion } from "framer-motion";
 import About from "./components/Home/About/About";
+import Footer from "./components/Footer/Footer";
+import NavWrapper from "./components/NavWrapper/NavWrapper";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +82,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <motion.div className="h-full">
       <BrowserRouter>
         <Nav />
+        <Content />
+        <Footer />
+
         <Content />
       </BrowserRouter>
     </motion.div>
