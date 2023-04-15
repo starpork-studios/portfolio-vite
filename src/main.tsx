@@ -75,6 +75,10 @@ function Content() {
     </div>
   );
 }
+/*
+<NavWrapper />
+        <Content />
+*/
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -84,8 +88,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Nav />
         <Content />
         <Footer />
-
-        <Content />
       </BrowserRouter>
     </motion.div>
   </React.StrictMode>

@@ -9,7 +9,7 @@ const Nav: React.FC = () => {
 
   return (
     <motion.div
-      className=" fixed  w-full  h-full z-10 pointer-events-none border-y-[40px] border-x-[60px] border-black"
+      className=" fixed  w-full  h-full z-10 pointer-events-none border-y-[40px] border-x-[60px] border-black border-opacity-75"
       style={{ opacity }}
     >
       <div className="flex flex-col top-0 ">
