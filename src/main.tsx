@@ -11,12 +11,12 @@ import {
 } from "react-router-dom";
 import Home from "./routes/Home/Home";
 import { BASE, WORK_1, WORK_2 } from "./routes";
-import Noise from "./components/Noise/Noise";
-import Nav from "./components/Nav/Nav";
+import Noise from "./components/Overlay/Noise/Noise";
+import Nav from "./components/Overlay/Nav/Nav";
 import { motion } from "framer-motion";
 import About from "./components/Home/About/About";
-import Footer from "./components/Footer/Footer";
-import NavWrapper from "./components/NavWrapper/NavWrapper";
+import Footer from "./components/Overlay/Footer/Footer";
+import NavWrapper from "./components/Overlay/NavWrapper/NavWrapper";
 
 const router = createBrowserRouter([
   {
