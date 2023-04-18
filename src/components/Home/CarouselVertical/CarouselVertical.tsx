@@ -5,12 +5,18 @@ import { useScroll } from "@react-three/drei";
 import { CylinderImage } from "./CylinderImage";
 import { CarouselProps } from "./types";
 import { images } from "../workdata";
+import { useScreenQueries } from "../../../hooks/useScreenQueries";
 const ROTATION_CONSTANT = 0.8;
+const MOBILE_ROTATION_CONSTANT = 0.55;
 
 export function CarouselVertical(props: CarouselProps) {
+  const { sm } = useScreenQueries();
+
   const segmentRotate = (order: number, initial: number) => {
     if (order === 0) return initial;
-    return initial - order * ROTATION_CONSTANT;
+    return (
+      initial - order * (sm ? MOBILE_ROTATION_CONSTANT : ROTATION_CONSTANT)
+    );
   };
 
   const scrollProportionFormula = (imageCount: number) => {
@@ -165,8 +171,8 @@ export function CarouselVertical(props: CarouselProps) {
     >
       {props.cyclinderData.map((data, index) => (
         <CylinderImage
-          rotation={[segmentRotate(index, 0), Math.PI / 7, Math.PI]}
-          file={data.file}
+          rotation={[segmentRotate(index, 0), Math.PI / (sm ? 20 : 7), Math.PI]}
+          file={sm ? data.mobile : data.file}
           key={`image-${index}`}
           isOpen={props.zoomed.isZoomed}
           onClick={() => onSelectWork(index)}

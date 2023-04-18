@@ -15,6 +15,7 @@ import {
 } from "three";
 import { MeshImageProps } from "./types";
 import { useDistortionAnimation } from "./useDistortionAnimation";
+import { useScreenQueries } from "../../../hooks/useScreenQueries";
 
 export function CylinderImage(props: MeshImageProps) {
   // This reference will give us direct access to the mesh
@@ -85,10 +86,12 @@ export function CylinderImage(props: MeshImageProps) {
     return;
   });
 
+  const { sm } = useScreenQueries();
+
   return (
     <mesh {...props} ref={mesh}>
       <cylinderBufferGeometry
-        args={[15, 15, 7.5, 128, 1, true, 0, Math.PI / 3.5]}
+        args={[15, 15, 7.5, 128, 1, true, 0, Math.PI / (sm ? 10 : 3.5)]}
         ref={bufferGeometry}
       />
       {

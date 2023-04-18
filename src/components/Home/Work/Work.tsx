@@ -30,7 +30,6 @@ const Work: React.FC<{
       if (scrollPosition === 0 && isScrolling) {
         setIsScrolling(false);
         setZoomed(ZOOMED_OUT_STATE);
-        console.log("hi");
         document.removeEventListener("wheel", REMOVE_SCROLLING);
       }
     }
@@ -62,7 +61,7 @@ const Work: React.FC<{
       <motion.div className="h-full w-full  absolute top-0 " ref={ref}>
         <div className="h-full w-full" onClick={goBack}></div>
         <div className=" bg-gray-200 flex justify-center align-middle">
-          <div className="px-[60px] pt-[90px] pb-[120px] w-full max-w-[1500px]">
+          <div className="px-[30px] md:px-[60px] md:pt-[90px] pt-[45px] md:pb-[120px] pb-[60px] w-full max-w-[1500px]">
             <Heading workItem={item} />
             <Info workItem={item} />
 

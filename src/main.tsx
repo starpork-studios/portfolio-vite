@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import {
@@ -17,6 +17,8 @@ import { motion } from "framer-motion";
 import About from "./components/Home/About/About";
 import Footer from "./components/Overlay/Footer/Footer";
 import NavWrapper from "./components/Overlay/NavWrapper/NavWrapper";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "tailwind.config";
 
 const router = createBrowserRouter([
   {
@@ -79,16 +81,25 @@ function Content() {
 <NavWrapper />
         <Content />
 */
+export const twConfig = resolveConfig(tailwindConfig);
+
+export default function App() {
+  return (
+    <>
+      <Noise />
+      <motion.div className="h-full">
+        <BrowserRouter>
+          <Nav />
+          <Content />
+          <Footer />
+        </BrowserRouter>
+      </motion.div>
+    </>
+  );
+}
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Noise />
-    <motion.div className="h-full">
-      <BrowserRouter>
-        <Nav />
-        <Content />
-        <Footer />
-      </BrowserRouter>
-    </motion.div>
+    <App />
   </React.StrictMode>
 );

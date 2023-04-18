@@ -1,15 +1,11 @@
 import React from "react";
 import { WorkItem } from "../workdata";
-import { motion } from "framer-motion";
+import { useScreenQueries } from "../../../hooks/useScreenQueries";
 
 const Info: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
+  useScreenQueries();
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.5, duration: 1 }}
-    >
+    <div>
       <div className="flex flex-col">
         {workItem.page?.paragraph}
         <img
@@ -17,7 +13,7 @@ const Info: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
           className="mt-[80px] ml-auto lg:max-w-[1280px]"
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
