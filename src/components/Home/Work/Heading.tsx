@@ -54,7 +54,7 @@ const Heading: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
   }, [controls, isInView]);
   return (
     <>
-      <div ref={ref} className=" flex flex-row justify-between">
+      <div ref={ref} className=" flex sm:flex-row flex-col justify-between">
         <motion.h1
           variants={headings({ delay: 0.3 })}
           initial="hidden"
@@ -76,7 +76,7 @@ const Heading: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
         variants={hr}
         initial="hidden"
         animate={controls}
-        className="mt-[20px] mb-[80px] border-t-2 border-black"
+        className="mt-[20px] md:mb-[80px] mb-[40px] border-t-2 border-black"
       />
     </>
   );

@@ -5,7 +5,10 @@ import { WorkItem } from "../workdata";
 import Heading from "./Heading";
 import Info from "./Info";
 import ScrollIndictator from "./ScrollIndictator";
-
+const REMOVE_SCROLLING = (event: WheelEvent) => {
+  event.preventDefault();
+};
+const ZOOMED_OUT_STATE = { isZoomed: false, page: -1, previous: -1 };
 const Work: React.FC<{
   item: WorkItem;
   zoomed: ZoomedProps;
@@ -26,13 +29,8 @@ const Work: React.FC<{
 
       if (scrollPosition === 0 && isScrolling) {
         setIsScrolling(false);
-        setZoomed((zoomed) => {
-          return {
-            isZoomed: false,
-            page: -1,
-            previous: -1,
-          };
-        });
+        setZoomed(ZOOMED_OUT_STATE);
+        document.removeEventListener("wheel", REMOVE_SCROLLING);
       }
     }
 
@@ -45,13 +43,11 @@ const Work: React.FC<{
 
   const goBack = () => {
     if (window.scrollY === 0) {
-      setZoomed({
-        isZoomed: false,
-        page: -1,
-        previous: -1,
-      });
+      setZoomed(ZOOMED_OUT_STATE);
       return;
     }
+    document.addEventListener("wheel", REMOVE_SCROLLING, { passive: false });
+
     setIsScrolling(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
     //ref.current?.scrollTo({ top: 0, behavior: "smooth" });
@@ -61,11 +57,11 @@ const Work: React.FC<{
 
   return (
     <>
-      <ScrollIndictator isVisible={showScrollHint} />
+      <ScrollIndictator isVisible={showScrollHint} isGoingBack={isScrolling} />
       <motion.div className="h-full w-full  absolute top-0 " ref={ref}>
         <div className="h-full w-full" onClick={goBack}></div>
         <div className=" bg-gray-200 flex justify-center align-middle">
-          <div className="px-[60px] pt-[90px] pb-[120px] w-full max-w-[1500px]">
+          <div className="px-[30px] md:px-[60px] md:pt-[90px] pt-[45px] md:pb-[120px] pb-[60px] w-full max-w-[1500px]">
             <Heading workItem={item} />
             <Info workItem={item} />
 

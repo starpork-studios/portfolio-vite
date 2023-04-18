@@ -11,10 +11,12 @@ import { createRef, useEffect, useRef, useState } from "react";
 import { ZoomedProps } from "../../components/Home/types";
 import Work from "../../components/Home/Work/Work";
 import { motion, useScroll } from "framer-motion";
+import { useScreenQueries } from "../../hooks/useScreenQueries";
 
 export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
   const { camera, mouse } = useThree();
   const vec = new Vector3(0, 0, 0);
+  const { sm } = useScreenQueries();
 
   return useFrame(() => {
     const z = camera.rotation.z;
@@ -24,14 +26,23 @@ export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
       camera.position.lerp(vec.set(0, 0, 9), 0.07);
       camera.rotation.z = MathUtils.lerp(z, 0, 0.05);
     } else {
-      camera.position.lerp(vec.set(mouse.x * 1, -mouse.y * 0.5, 0), 0.07);
-      camera.rotation.z = MathUtils.lerp(z, -Math.PI / 48, 0.05);
+      camera.position.lerp(
+        sm ? vec.set(0, 0, 0) : vec.set(mouse.x * 1, -mouse.y * 0.5, 0),
+        0.07
+      );
+      camera.rotation.z = MathUtils.lerp(
+        z,
+        sm ? -Math.PI / 48 : -Math.PI / 48,
+        0.05
+      );
     }
 
     //camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.5, 0), 0.07);
   });
 };
 function Home() {
+  const { sm } = useScreenQueries();
+
   const [zoomed, setZoomed] = useState<ZoomedProps>({
     page: -1,
     previous: -1,

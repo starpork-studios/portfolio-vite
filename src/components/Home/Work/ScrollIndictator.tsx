@@ -2,7 +2,10 @@ import React from "react";
 import { ReactComponent as Chevron } from "../../../assets/icons/chevron-double-down.svg";
 import { AnimatePresence, motion } from "framer-motion";
 
-const ScrollIndictator: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
+const ScrollIndictator: React.FC<{
+  isVisible: boolean;
+  isGoingBack: boolean;
+}> = ({ isVisible, isGoingBack }) => {
   const scrollDown = () => {
     const height = window.innerHeight;
     window.scrollTo({ top: height, behavior: "smooth" });
@@ -10,7 +13,7 @@ const ScrollIndictator: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !isGoingBack && (
         <motion.button
           onClick={scrollDown}
           className=" w-14 h-14 absolute z-[9999]   left-[calc(50vw-1.75rem)] top-[calc(100vh-100px)]"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import {
@@ -11,10 +11,14 @@ import {
 } from "react-router-dom";
 import Home from "./routes/Home/Home";
 import { BASE, WORK_1, WORK_2 } from "./routes";
-import Noise from "./components/Noise/Noise";
-import Nav from "./components/Nav/Nav";
+import Noise from "./components/Overlay/Noise/Noise";
+import Nav from "./components/Overlay/Nav/Nav";
 import { motion } from "framer-motion";
 import About from "./components/Home/About/About";
+import Footer from "./components/Overlay/Footer/Footer";
+import NavWrapper from "./components/Overlay/NavWrapper/NavWrapper";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "tailwind.config";
 
 const router = createBrowserRouter([
   {
@@ -73,15 +77,29 @@ function Content() {
     </div>
   );
 }
+/*
+<NavWrapper />
+        <Content />
+*/
+export const twConfig = resolveConfig(tailwindConfig);
+
+export default function App() {
+  return (
+    <>
+      <Noise />
+      <motion.div className="h-full">
+        <BrowserRouter>
+          <Nav />
+          <Content />
+          <Footer />
+        </BrowserRouter>
+      </motion.div>
+    </>
+  );
+}
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Noise />
-    <motion.div className="h-full">
-      <BrowserRouter>
-        <Nav />
-        <Content />
-      </BrowserRouter>
-    </motion.div>
+    <App />
   </React.StrictMode>
 );
