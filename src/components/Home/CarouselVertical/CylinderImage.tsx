@@ -91,7 +91,16 @@ export function CylinderImage(props: MeshImageProps) {
   return (
     <mesh {...props} ref={mesh}>
       <cylinderBufferGeometry
-        args={[15, 15, 7.5, 128, 1, true, 0, Math.PI / (sm ? 10 : 3.5)]}
+        args={[
+          15,
+          15,
+          sm ? 7.5 : 7.5,
+          128,
+          1,
+          true,
+          0,
+          Math.PI / (sm ? 10 : 3.5),
+        ]}
         ref={bufferGeometry}
       />
       {

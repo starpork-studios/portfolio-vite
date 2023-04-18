@@ -26,14 +26,23 @@ export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
       camera.position.lerp(vec.set(0, 0, 9), 0.07);
       camera.rotation.z = MathUtils.lerp(z, 0, 0.05);
     } else {
-      camera.position.lerp(vec.set(mouse.x * 1, -mouse.y * 0.5, 0), 0.07);
-      camera.rotation.z = MathUtils.lerp(z, sm ? 0 : -Math.PI / 48, 0.05);
+      camera.position.lerp(
+        sm ? vec.set(0, 0, 0) : vec.set(mouse.x * 1, -mouse.y * 0.5, 0),
+        0.07
+      );
+      camera.rotation.z = MathUtils.lerp(
+        z,
+        sm ? -Math.PI / 48 : -Math.PI / 48,
+        0.05
+      );
     }
 
     //camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.5, 0), 0.07);
   });
 };
 function Home() {
+  const { sm } = useScreenQueries();
+
   const [zoomed, setZoomed] = useState<ZoomedProps>({
     page: -1,
     previous: -1,
