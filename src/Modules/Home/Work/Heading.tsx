@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import { WorkItem } from "../workdata";
 import {
   Transition,
   Variants,
@@ -7,6 +6,7 @@ import {
   useAnimation,
   useInView,
 } from "framer-motion";
+import { ContentItem } from "../content";
 
 const headings = (props?: { delay?: number }): Variants => {
   return {
@@ -43,7 +43,7 @@ const hr: Variants = {
   },
 };
 
-const Heading: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
+const Heading: React.FC<{ workItem: ContentItem }> = ({ workItem }) => {
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -76,7 +76,7 @@ const Heading: React.FC<{ workItem: WorkItem }> = ({ workItem }) => {
         variants={hr}
         initial="hidden"
         animate={controls}
-        className="mt-[20px] md:mb-[80px] mb-[40px] border-t-2 border-black"
+        className="mt-[20px]  border-t-2 border-black"
       />
     </>
   );
