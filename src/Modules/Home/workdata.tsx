@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { WORK_1, WORK_2 } from "../../routes";
-import MotionWrapper from "../Overlay/Shared/MotionWrapper";
-import { MotionFrom } from "../Overlay/Shared/types";
+import MotionWrapper from "../../components/Overlay/Shared/MotionWrapper";
+import { MotionFrom } from "../../components/Overlay/Shared/types";
 
 export const images = [
   {
@@ -15,11 +15,11 @@ export const images = [
       year: "2022-23",
       image: "lmi2.png",
       paragraph: (
-        <div className="font-body h-full font-light w-full justify-between text-lg gap-4 flex flex-col md:flex-row tracking-wider">
+        <div className=" max-w-[980px]  ml-auto font-body h-full font-light w-full justify-between text-lg gap-4 flex flex-col md:flex-row tracking-wider">
           <MotionWrapper
             direction={MotionFrom.Above}
-            delay={1}
-            triggerInView={true}
+            delay={1.4}
+            automatic={true}
             className=" md:w-[350px]"
           >
             <ul className="h-full flex flex-col justify-between">
@@ -32,8 +32,8 @@ export const images = [
           <MotionWrapper
             className="   md:w-[350px]"
             direction={MotionFrom.Above}
-            delay={1.2}
-            triggerInView={true}
+            delay={1.6}
+            automatic={true}
           >
             <p>
               I was a Frontend Engineer on this project forming a strong working
@@ -47,8 +47,8 @@ export const images = [
           <MotionWrapper
             className="   md:w-[350px]"
             direction={MotionFrom.Above}
-            delay={1.4}
-            triggerInView={true}
+            delay={1.8}
+            automatic={true}
           >
             <p>
               Les Mills Connect is a web app used by hundreds of thousands of
@@ -69,6 +69,6 @@ export const images = [
     url: WORK_2,
   },
 ];
-export type WorkItem = typeof images[number];
+export type WorkItem = (typeof images)[number];
 
 export type WorkData = typeof images;

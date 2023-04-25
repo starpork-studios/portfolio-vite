@@ -6,7 +6,7 @@ interface MotionWrapperProps extends MotionProps {
   direction: MotionFrom;
   delay?: number;
   className?: string;
-  triggerInView?: boolean;
+  automatic?: boolean;
 }
 
 export const MotionWrapper: React.FC<MotionWrapperProps> = ({
@@ -14,18 +14,18 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
   direction,
   delay,
   className,
-  triggerInView,
+  automatic,
 }) => {
   const directionInitial = () => {
     switch (direction) {
       case MotionFrom.Above:
-        return { y: -5 };
+        return { y: -15 };
       case MotionFrom.Below:
-        return { y: 5 };
+        return { y: 15 };
       case MotionFrom.Left:
-        return { x: -5 };
+        return { x: -15 };
       case MotionFrom.Right:
-        return { x: -5 };
+        return { x: -15 };
     }
   };
 
@@ -36,14 +36,12 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
       opacity: 1,
       transition: {
         delay: delay || 0,
-        duration: 2,
-        type: "spring",
-        stiffness: 50,
+        duration: 1,
       },
     },
   };
 
-  const props = triggerInView
+  const props = automatic
     ? { animate: "visible" }
     : { whileInView: "visible", viewport: { once: true } };
 

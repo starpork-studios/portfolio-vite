@@ -4,13 +4,14 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Group, MathUtils, Vector3 } from "three";
 
 import { Scroll, ScrollControls } from "@react-three/drei";
-import { CarouselVertical } from "../../components/Home/CarouselVertical/CarouselVertical";
-import SectionControls from "../../components/Home/SectionControls/SectionControls";
-import { images } from "../../components/Home/workdata";
+import { CarouselVertical } from "../../Modules/Home/CarouselVertical/CarouselVertical";
+import SectionControls from "../../Modules/Home/SectionControls/SectionControls";
+import { images } from "../../Modules/Home/workdata";
 import { createRef, useEffect, useRef, useState } from "react";
-import { ZoomedProps } from "../../components/Home/types";
-import Work from "../../components/Home/Work/Work";
+import { ZoomedProps } from "../../Modules/Home/types";
+import Work from "../../Modules/Home/Work/Work";
 import { motion, useScroll } from "framer-motion";
+import { content } from "../../Modules/Home/content";
 import { useScreenQueries } from "../../hooks/useScreenQueries";
 
 export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
@@ -92,15 +93,12 @@ function Home() {
           </>
           <Scroll html>
             <div className="w-screen">
-              {images.map((item, index) => {
+              {content.map((item, index) => {
                 return (
                   <SectionControls
                     data={item}
-                    setZoomed={setZoomed}
-                    navigate={navigate}
+                    zoomed={zoomed}
                     key={`section-${index}`}
-                    index={index}
-                    carouselRef={carouselRef}
                     sectionRef={sectionRefs.current[index]}
                   />
                 );
@@ -110,7 +108,7 @@ function Home() {
         </ScrollControls>
       </Canvas>
 
-      {images.map((item, index) => (
+      {content.map((item, index) => (
         <Work zoomed={zoomed} setZoomed={setZoomed} item={item} index={index} />
       ))}
     </motion.div>

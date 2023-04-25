@@ -1,16 +1,18 @@
 import { motion, useScroll } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { ZoomedProps } from "../types";
-import { WorkItem } from "../workdata";
 import Heading from "./Heading";
 import Info from "./Info";
 import ScrollIndictator from "./ScrollIndictator";
+import { ContentItem } from "../content";
+import text from "../../../components/Inputs/ArrowButton";
+import ArrowButton from "../../../components/Inputs/ArrowButton";
 const REMOVE_SCROLLING = (event: WheelEvent) => {
   event.preventDefault();
 };
 const ZOOMED_OUT_STATE = { isZoomed: false, page: -1, previous: -1 };
 const Work: React.FC<{
-  item: WorkItem;
+  item: ContentItem;
   zoomed: ZoomedProps;
   setZoomed: React.Dispatch<React.SetStateAction<ZoomedProps>>;
   index: number;
@@ -55,19 +57,22 @@ const Work: React.FC<{
 
   if (zoomed.page != index) return <></>;
 
+  console.log(item);
+
   return (
     <>
       <ScrollIndictator isVisible={showScrollHint} isGoingBack={isScrolling} />
       <motion.div className="h-full w-full  absolute top-0 " ref={ref}>
         <div className="h-full w-full" onClick={goBack}></div>
         <div className=" bg-gray-200 flex justify-center align-middle">
-          <div className="px-[30px] md:px-[60px] md:pt-[90px] pt-[45px] md:pb-[120px] pb-[60px] w-full max-w-[1500px]">
+          <div className="flex flex-col px-[30px] md:px-[60px] md:pt-[90px] pt-[45px] md:pb-[60px] pb-[30px] w-full max-w-[1500px]">
             <Heading workItem={item} />
             <Info workItem={item} />
-
-            <button className="bg-blue-600" onClick={goBack}>
-              Go Back
-            </button>
+            <ArrowButton
+              className="ml-auto md:mt-[60px] mt-[30px] font-body font-light text-re"
+              onClick={goBack}
+              text="Back"
+            />
           </div>
         </div>
       </motion.div>
