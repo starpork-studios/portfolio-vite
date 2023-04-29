@@ -1,0 +1,21 @@
+.shadow-border {
+  position: fixed;
+  z-index: 9997;
+  top: 0px;
+  left: -80px;
+  height: 100vh;
+  width: calc(100vw + 160px);
+  pointer-events: none;
+}
+
+.shadow-border-top {
+  @extend .shadow-border;
+
+  box-shadow: inset 0px 20px 80px 20px black;
+  clip-path: polygon(0% 0%, 0% 150px, 100% 150px, 100% 0%);
+}
+.shadow-border-bottom {
+  @extend .shadow-border;
+  box-shadow: inset 0px -20px 80px 20px black;
+  clip-path: polygon(0% 150px, 0% 100%, 100% 100%, 100% 150px);
+}
