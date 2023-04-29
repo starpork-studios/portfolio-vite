@@ -1,12 +1,19 @@
-import { MotionProps, Variants, motion } from "framer-motion";
-import React from "react";
+import {
+  MotionProps,
+  Variants,
+  motion,
+  useAnimationControls,
+} from "framer-motion";
+import React, { useEffect } from "react";
 import { MotionFrom } from "./types";
+import { useAnimateMode } from "./useAnimateMode";
 
 interface MotionWrapperProps extends MotionProps {
   direction: MotionFrom;
   delay?: number;
   className?: string;
   automatic?: boolean;
+  isDark?: boolean;
 }
 
 export const MotionWrapper: React.FC<MotionWrapperProps> = ({
@@ -15,7 +22,22 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
   delay,
   className,
   automatic,
+  isDark,
 }) => {
+  const controls = useAnimationControls();
+
+  useEffect(() => {
+    automatic &&
+      controls.start({
+        y: 0,
+        opacity: 1,
+        transition: {
+          delay: delay || 0,
+          duration: 1,
+        },
+      });
+  }, []);
+
   const directionInitial = () => {
     switch (direction) {
       case MotionFrom.Above:
@@ -28,6 +50,7 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
         return { x: -15 };
     }
   };
+  useAnimateMode(isDark || false, controls, "color");
 
   const variants: Variants = {
     hidden: { ...directionInitial(), opacity: 0 },
@@ -42,13 +65,14 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
   };
 
   const props = automatic
-    ? { animate: "visible" }
+    ? {}
     : { whileInView: "visible", viewport: { once: true } };
 
   return (
     <motion.div
-      variants={variants}
       initial={"hidden"}
+      animate={controls}
+      variants={variants}
       className={className}
       {...props}
     >

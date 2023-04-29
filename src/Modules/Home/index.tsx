@@ -1,18 +1,17 @@
-import "./Home.css";
-import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Group, MathUtils, Vector3 } from "three";
 
 import { Scroll, ScrollControls } from "@react-three/drei";
-import { CarouselVertical } from "../../Modules/Home/CarouselVertical/CarouselVertical";
-import SectionControls from "../../Modules/Home/SectionControls/SectionControls";
-import { images } from "../../Modules/Home/workdata";
-import { createRef, useEffect, useRef, useState } from "react";
-import { ZoomedProps } from "../../Modules/Home/types";
-import Work from "../../Modules/Home/Work/Work";
-import { motion, useScroll } from "framer-motion";
-import { content } from "../../Modules/Home/content";
+import { CarouselVertical } from "./CarouselVertical";
+import SectionControls from "./SectionControls";
+import { createRef, useContext, useEffect, useRef, useState } from "react";
+import { ZoomedProps } from "./types";
+import Work from "./Work";
+import { motion } from "framer-motion";
+import { content } from "./content";
 import { useScreenQueries } from "../../hooks/useScreenQueries";
+import { NavModeContext } from "../../NavModeProvider";
+import ShadowBorder from "../../components/Overlay/ShadowBorder/ShadowBorder";
 
 export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
   const { camera, mouse } = useThree();
@@ -42,8 +41,6 @@ export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
   });
 };
 function Home() {
-  const { sm } = useScreenQueries();
-
   const [zoomed, setZoomed] = useState<ZoomedProps>({
     page: -1,
     previous: -1,
@@ -51,20 +48,19 @@ function Home() {
   });
   const carouselRef = useRef<Group>(null!);
   const sectionRefs = useRef<Array<React.RefObject<HTMLElement>>>(
-    Array(images.length)
+    Array(content.length)
       .fill(null)
       .map(() => createRef<HTMLElement>())
   );
-  const { scrollY } = useScroll();
 
+  const { setIsDark } = useContext(NavModeContext);
   useEffect(() => {
-    console.log(scrollY);
-  }, [scrollY]);
-
-  const navigate = useNavigate();
+    setIsDark(false);
+  }, []);
 
   return (
     <motion.div className="w-full h-full overflow-auto ">
+      <ShadowBorder visible={!zoomed.isZoomed} />
       <Canvas
         camera={{
           position: [-10, -90, -60], //change to y = 10 for horizontal
@@ -77,14 +73,14 @@ function Home() {
         <Rig {...zoomed} />
         <ScrollControls
           damping={0.3}
-          pages={images.length}
+          pages={content.length}
           distance={1.5} /* 1 page per photo*/
         >
           <>
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <CarouselVertical
-              cyclinderData={images}
+              cyclinderData={content}
               zoomed={zoomed}
               setZoomed={setZoomed}
               carouselRef={carouselRef}
@@ -109,7 +105,13 @@ function Home() {
       </Canvas>
 
       {content.map((item, index) => (
-        <Work zoomed={zoomed} setZoomed={setZoomed} item={item} index={index} />
+        <Work
+          key={`work-${index}`}
+          zoomed={zoomed}
+          setZoomed={setZoomed}
+          item={item}
+          index={index}
+        />
       ))}
     </motion.div>
   );

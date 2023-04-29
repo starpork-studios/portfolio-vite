@@ -4,7 +4,7 @@ import { Group, MathUtils } from "three";
 import { useScroll } from "@react-three/drei";
 import { CylinderImage } from "./CylinderImage";
 import { CarouselProps } from "./types";
-import { images } from "../workdata";
+import { content } from "../content";
 import { useScreenQueries } from "../../../hooks/useScreenQueries";
 const ROTATION_CONSTANT = 0.8;
 const MOBILE_ROTATION_CONSTANT = 0.55;
@@ -128,7 +128,7 @@ export function CarouselVertical(props: CarouselProps) {
     //2 images + 0.25
 
     const scrollSection =
-      (data.el.scrollHeight - window.innerHeight) / (images.length - 1);
+      (data.el.scrollHeight - window.innerHeight) / (content.length - 1);
     if (props.zoomed.isZoomed) {
       data.el.scroll({
         top: props.zoomed.page * scrollSection,

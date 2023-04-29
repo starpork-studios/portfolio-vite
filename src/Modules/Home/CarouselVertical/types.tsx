@@ -2,7 +2,7 @@ import { GroupProps, MeshProps } from "@react-three/fiber";
 import { RefObject } from "react";
 import { Group } from "three";
 import { ZoomedProps } from "../types";
-import { WorkData } from "../workdata";
+import { ContentData } from "../content";
 
 export interface MeshImageProps extends MeshProps {
   file: string;
@@ -10,7 +10,7 @@ export interface MeshImageProps extends MeshProps {
 }
 
 export interface CarouselProps extends GroupProps {
-  cyclinderData: WorkData;
+  cyclinderData: ContentData;
   zoomed: ZoomedProps;
   setZoomed: React.Dispatch<React.SetStateAction<ZoomedProps>>;
   carouselRef: React.MutableRefObject<Group>;

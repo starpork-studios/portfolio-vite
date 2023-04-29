@@ -1,13 +1,14 @@
 import React from "react";
 import { BlockSection } from "./types";
-import MotionWrapper from "../../../../components/Overlay/Shared/MotionWrapper";
-import { MotionFrom } from "../../../../components/Overlay/Shared/types";
+import MotionWrapper from "../../../../components/Animated/MotionWrapper";
+import { MotionFrom } from "../../../../components/Animated/types";
+import SlideInLine from "../../../../components/Animated/SlideInLine";
 
 const Block: React.FC<{ blockSection: BlockSection }> = ({ blockSection }) => {
   const { heading, paragraphs } = blockSection;
   return (
     <div className=" flex flex-col font-body ">
-      <MotionWrapper direction={MotionFrom.Above} delay={0.6}>
+      <MotionWrapper direction={MotionFrom.Above} delay={0.6} isDark>
         <h5 className=" text-5xl font-bold ">{heading}</h5>
       </MotionWrapper>
 
@@ -18,8 +19,16 @@ const Block: React.FC<{ blockSection: BlockSection }> = ({ blockSection }) => {
             key={`paragraph-${index}`}
             direction={MotionFrom.Below}
             delay={index * 0.3 + 0.8}
+            automatic={false}
+            isDark
           >
-            <hr className="my-[20px] border-t-1 border-black" />
+            <SlideInLine
+              direction={MotionFrom.Left}
+              isDark
+              className="my-[20px] border-t-1"
+              delay={index * 0.3 + 0.8}
+              automatic={false}
+            />
             {text}
           </MotionWrapper>
         ))}

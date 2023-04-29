@@ -1,54 +1,16 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-  useLocation,
-} from "react-router-dom";
-import Home from "./routes/Home/Home";
-import { BASE, WORK_1, WORK_2 } from "./routes";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import Home from "./Modules/Home";
 import Noise from "./components/Overlay/Noise/Noise";
 import Nav from "./components/Overlay/Nav/Nav";
 import { motion } from "framer-motion";
-import About from "./Modules/Home/About/About";
 import Footer from "./components/Overlay/Footer/Footer";
-import NavWrapper from "./components/Overlay/NavWrapper/NavWrapper";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwind.config";
-
-const router = createBrowserRouter([
-  {
-    path: BASE,
-    element: (
-      <>
-        <Nav />
-        <Home />
-      </>
-    ),
-  },
-  {
-    path: `${BASE}${WORK_1}`,
-    element: (
-      <>
-        <Nav />
-        <>work</>
-      </>
-    ),
-  },
-  {
-    path: `${BASE}${WORK_2}`,
-    element: (
-      <>
-        <Nav />
-        <>work</>
-      </>
-    ),
-  },
-]);
+import { NavModeProvider } from "./NavModeProvider";
+import About from "./Modules/About";
 
 function Content() {
   const location = useLocation();
@@ -77,15 +39,12 @@ function Content() {
     </div>
   );
 }
-/*
-<NavWrapper />
-        <Content />
-*/
+
 export const twConfig = resolveConfig(tailwindConfig);
 
 export default function App() {
   return (
-    <>
+    <NavModeProvider>
       <Noise />
       <motion.div className="h-full">
         <BrowserRouter>
@@ -94,7 +53,7 @@ export default function App() {
           <Footer />
         </BrowserRouter>
       </motion.div>
-    </>
+    </NavModeProvider>
   );
 }
 

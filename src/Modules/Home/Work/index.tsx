@@ -1,12 +1,15 @@
 import { motion, useScroll } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { ZoomedProps } from "../types";
 import Heading from "./Heading";
-import Info from "./Info";
+import Info from "./Content";
 import ScrollIndictator from "./ScrollIndictator";
 import { ContentItem } from "../content";
 import text from "../../../components/Inputs/ArrowButton";
 import ArrowButton from "../../../components/Inputs/ArrowButton";
+import MotionWrapper from "../../../components/Animated/MotionWrapper";
+import { MotionFrom } from "../../../components/Animated/types";
+import { NavModeContext } from "../../../NavModeProvider";
 const REMOVE_SCROLLING = (event: WheelEvent) => {
   event.preventDefault();
 };
@@ -57,8 +60,6 @@ const Work: React.FC<{
 
   if (zoomed.page != index) return <></>;
 
-  console.log(item);
-
   return (
     <>
       <ScrollIndictator isVisible={showScrollHint} isGoingBack={isScrolling} />
@@ -68,11 +69,17 @@ const Work: React.FC<{
           <div className="flex flex-col px-[30px] md:px-[60px] md:pt-[90px] pt-[45px] md:pb-[60px] pb-[30px] w-full max-w-[1500px]">
             <Heading workItem={item} />
             <Info workItem={item} />
-            <ArrowButton
-              className="ml-auto md:mt-[60px] mt-[30px] font-body font-light text-re"
-              onClick={goBack}
-              text="Back"
-            />
+            <MotionWrapper
+              direction={MotionFrom.Below}
+              delay={0.2}
+              className="ml-auto md:mt-[60px] mt-[30px]"
+            >
+              <ArrowButton
+                className=" font-body font-light"
+                onClick={goBack}
+                text="Back"
+              />
+            </MotionWrapper>
           </div>
         </div>
       </motion.div>
