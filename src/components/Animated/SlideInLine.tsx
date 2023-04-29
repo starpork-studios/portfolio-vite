@@ -1,7 +1,6 @@
 import { Variants, motion, useAnimationControls } from "framer-motion";
 import React, { useContext, useEffect } from "react";
 import { MotionFrom } from "./types";
-import { NavModeContext } from "../../../NavModeProvider";
 import { useAnimateMode } from "./useAnimateMode";
 
 export const SlideInLine: React.FC<{
