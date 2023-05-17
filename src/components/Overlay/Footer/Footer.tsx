@@ -8,6 +8,7 @@ import SlideInLine from "../../Animated/SlideInLine";
 
 const Footer: React.FC = () => {
   const { isDark } = useContext(NavModeContext);
+
   return (
     <NavOverlay type={OverlayType.Footer}>
       <motion.div

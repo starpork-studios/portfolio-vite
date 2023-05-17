@@ -50,7 +50,7 @@ export default function App() {
         <BrowserRouter>
           <Nav />
           <Content />
-          <Footer />
+          {/*<Footer />*/}
         </BrowserRouter>
       </motion.div>
     </NavModeProvider>

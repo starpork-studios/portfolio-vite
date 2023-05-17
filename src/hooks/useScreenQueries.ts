@@ -3,8 +3,8 @@ import { twConfig } from "../main";
 
 export const useScreenQueries = () => {
   const x = twConfig.theme.screens;
-
   const { matches } = useMediaQueries({
+    xs: `(max-width: ${x.xs}`,
     sm: `(max-width: ${x.sm}`,
     md: `(max-width: ${x.md}`,
     lg: `(max-width: ${x.lg}`,

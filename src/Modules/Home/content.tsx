@@ -48,7 +48,7 @@ export const content = [
                 While working on this project, I had a range of technical
                 responsibilities
               </p>
-              <ul>
+              <ul className="list-disc list-inside">
                 <li>Building UI components</li>
                 <li>Creating & maintaining full end to end automation tests</li>
                 <li>Integrating analytics systems</li>
@@ -87,7 +87,7 @@ export const content = [
     page: {
       heading: "Smartsims",
       year: "2022-23",
-      image: "Content/LMI-UI.png",
+      image: "Content/SS-UI.png",
       sections: [
         {
           heading: "Background",
@@ -124,7 +124,7 @@ export const content = [
                 While working on this project, I had a range of technical
                 responsibilities
               </p>
-              <ul>
+              <ul className="list-disc list-inside">
                 <li>Building UI components</li>
                 <li>Creating & maintaining full end to end automation tests</li>
                 <li>Integrating analytics systems</li>

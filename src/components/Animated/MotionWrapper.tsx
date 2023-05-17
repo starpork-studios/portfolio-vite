@@ -14,6 +14,7 @@ interface MotionWrapperProps extends MotionProps {
   className?: string;
   automatic?: boolean;
   isDark?: boolean;
+  toggleColor?: string;
 }
 
 export const MotionWrapper: React.FC<MotionWrapperProps> = ({
@@ -23,6 +24,7 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
   className,
   automatic,
   isDark,
+  toggleColor,
 }) => {
   const controls = useAnimationControls();
 
@@ -50,7 +52,8 @@ export const MotionWrapper: React.FC<MotionWrapperProps> = ({
         return { x: -15 };
     }
   };
-  useAnimateMode(isDark || false, controls, "color");
+
+  useAnimateMode(isDark || false, controls, "color", toggleColor);
 
   const variants: Variants = {
     hidden: { ...directionInitial(), opacity: 0 },

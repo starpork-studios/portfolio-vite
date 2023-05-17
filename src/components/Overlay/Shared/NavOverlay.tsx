@@ -1,15 +1,17 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLocation, useParams } from "react-router-dom";
 export enum OverlayType {
   Footer,
   Nav,
 }
 export const NavOverlay: React.FC<{
   children?: React.ReactNode;
+  hideOnScroll?: boolean;
   type: OverlayType;
-}> = ({ children, type }) => {
+}> = ({ children, type, hideOnScroll }) => {
   const { scrollY } = useScroll();
 
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const opacity = useTransform(scrollY, [0, 300], [1, hideOnScroll ? 0 : 1]);
 
   const OverlayComponent =
     type === OverlayType.Footer ? motion.footer : motion.nav;
