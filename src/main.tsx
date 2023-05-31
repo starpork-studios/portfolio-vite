@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwind.config";
 import { NavModeProvider } from "./NavModeProvider";
-import { Content } from "./content";
+import { Content } from "./Content";
 
 export const twConfig = resolveConfig(tailwindConfig);
 
