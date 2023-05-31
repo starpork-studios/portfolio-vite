@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { NavModeContext } from "../../NavModeProvider";
 import MotionWrapper from "../../components/Animated/MotionWrapper";
 import { MotionFrom } from "../../components/Animated/types";
@@ -7,7 +7,19 @@ import { ReactComponent as Diamond } from "../../assets/icons/diamond.svg";
 import DiamondGrid from "./DiamondGrid";
 import { useScreenQueries } from "../../hooks/useScreenQueries";
 import { motion } from "framer-motion";
+import three from "three";
+import hoverEffect from "hover-effect";
 
+new hoverEffect({
+  //parent: container.current,
+  parent: document.querySelector(".img-contain"),
+  intensity: 0.3,
+  image1: "jarrod2.png",
+  image2: "smallJarrod.png",
+  displacementImage:
+    "https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/fluid.jpg",
+  imagesRatio: 1.3,
+});
 const About = () => {
   const skills = [
     { text: "JavaScript" },
@@ -36,6 +48,26 @@ const About = () => {
 
   const { sm, xs } = useScreenQueries();
   const skillCols = xs ? 2 : sm ? 3 : 4;
+
+  const container = useRef<HTMLDivElement>(null!);
+  const [effectMade, setEffectmade] = useState(false);
+
+  useEffect(() => {
+    if (!effectMade) {
+      new hoverEffect({
+        //parent: container.current,
+        parent: document.querySelector(".img-contain"),
+        intensity: 0.3,
+        image1: "jarrod2.png",
+        image2: "smallJarrod.png",
+        displacementImage:
+          "https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/fluid.jpg",
+        imagesRatio: 1.3,
+      });
+      setEffectmade(true);
+    }
+    document.body.style.cursor = "auto";
+  }, []);
 
   const { setIsDark } = useContext(NavModeContext);
   useEffect(() => {
@@ -98,7 +130,7 @@ const About = () => {
             />
           </div>
         </div>
-        <MotionWrapper
+        {/*<MotionWrapper
           direction={MotionFrom.Below}
           delay={0.6}
           isDark
@@ -106,7 +138,18 @@ const About = () => {
         >
           <img
             src="jarrod.png"
-            className=" sticky top-[90px] md:max-w-[500px] w-full"
+            className="sticky top-[90px] md:max-w-[500px] w-full"
+          />
+            </MotionWrapper>*/}
+        <MotionWrapper
+          direction={MotionFrom.Below}
+          delay={0.6}
+          isDark
+          className="sticky top-[90px] flex flex-col font-body md:mt-[150px] sm:mt-[80px] items-end lg:h-[595px] lg:w-[493px] md:h-[492px] md:w-[375px] sm:h-[660px] h-[492px] w-full "
+        >
+          <div
+            className="lg:h-[595px] lg:w-[493px] md:h-[492px] md:w-[375px]  sm:h-[660px] h-[492px] w-full img-contain"
+            ref={container}
           />
         </MotionWrapper>
       </div>

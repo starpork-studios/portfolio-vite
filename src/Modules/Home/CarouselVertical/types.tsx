@@ -7,6 +7,8 @@ import { ContentData } from "../content";
 export interface MeshImageProps extends MeshProps {
   file: string;
   isOpen: boolean;
+  setCursorCircleMode: React.Dispatch<React.SetStateAction<boolean>>;
+  cursorCircleMode: boolean;
 }
 
 export interface CarouselProps extends GroupProps {
@@ -15,4 +17,6 @@ export interface CarouselProps extends GroupProps {
   setZoomed: React.Dispatch<React.SetStateAction<ZoomedProps>>;
   carouselRef: React.MutableRefObject<Group>;
   sectionRefs: React.MutableRefObject<RefObject<HTMLElement>[]>;
+  setCursorCircleMode: React.Dispatch<React.SetStateAction<boolean>>;
+  cursorCircleMode: boolean;
 }

@@ -176,6 +176,8 @@ export function CarouselVertical(props: CarouselProps) {
           key={`image-${index}`}
           isOpen={props.zoomed.isZoomed}
           onClick={() => onSelectWork(index)}
+          cursorCircleMode={props.cursorCircleMode}
+          setCursorCircleMode={props.setCursorCircleMode}
         />
       ))}
     </group>

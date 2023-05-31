@@ -58,8 +58,31 @@ function Home() {
     setIsDark(false);
   }, []);
 
+  const [cursorXY, setCursorXY] = useState({ x: -100, y: -100 });
+  const [cursorCircleMode, setCursorCircleMode] = useState(false);
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      const x = e.clientX - 16;
+      const y = e.clientY - 16;
+      setCursorXY({ x, y });
+    };
+    window.addEventListener("mousemove", moveCursor);
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
+  }, []);
+
   return (
     <motion.div className="w-full h-full overflow-auto ">
+      {cursorCircleMode && (
+        <div
+          className=" fixed left-0 top-0 w-8 h-8 bg-white opacity-50 z-[10000] rounded-3xl pointer-events-none"
+          style={{
+            transform: `translate3d(${cursorXY.x}px, ${cursorXY.y}px, 0)`,
+          }}
+        ></div>
+      )}
       <ShadowBorder visible={!zoomed.isZoomed} />
       <Canvas
         camera={{
@@ -85,6 +108,8 @@ function Home() {
               setZoomed={setZoomed}
               carouselRef={carouselRef}
               sectionRefs={sectionRefs}
+              cursorCircleMode={cursorCircleMode}
+              setCursorCircleMode={setCursorCircleMode}
             />
           </>
           <Scroll html>
