@@ -40,12 +40,8 @@ export function CylinderImage(props: MeshImageProps) {
   }, [props.isOpen]);
 
   useEffect(() => {
-    //document.body.style.cursor = hover && !props.isOpen ? "pointer" : "auto";
-    document.body.style.cursor = hover && !props.isOpen ? "none" : "auto";
-  }, [hover, props.isOpen]);
-
-  useEffect(() => {
-    props.setCursorCircleMode(hover && !props.isOpen);
+    document.body.style.cursor = hover && !props.isOpen ? "pointer" : "auto";
+    //document.body.style.cursor = hover && !props.isOpen ? "none" : "auto";
   }, [hover, props.isOpen]);
 
   // Detect pointer leaving the mesh
