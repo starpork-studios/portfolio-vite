@@ -3,23 +3,10 @@ import { NavModeContext } from "../../NavModeProvider";
 import MotionWrapper from "../../components/Animated/MotionWrapper";
 import { MotionFrom } from "../../components/Animated/types";
 import OverlineParagraph from "../../components/Animated/OverlineParagraph";
-import { ReactComponent as Diamond } from "../../assets/icons/diamond.svg";
 import DiamondGrid from "./DiamondGrid";
 import { useScreenQueries } from "../../hooks/useScreenQueries";
-import { motion } from "framer-motion";
-import three from "three";
-import hoverEffect from "hover-effect";
+import { hoverEffect } from "./hover-effect";
 
-new hoverEffect({
-  //parent: container.current,
-  parent: document.querySelector(".img-contain"),
-  intensity: 0.3,
-  image1: "jarrod2.png",
-  image2: "smallJarrod.png",
-  displacementImage:
-    "https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/fluid.jpg",
-  imagesRatio: 1.3,
-});
 const About = () => {
   const skills = [
     { text: "JavaScript" },
@@ -57,11 +44,10 @@ const About = () => {
       new hoverEffect({
         //parent: container.current,
         parent: document.querySelector(".img-contain"),
-        intensity: 0.3,
+        intensity: 1,
         image1: "jarrod2.png",
         image2: "smallJarrod.png",
-        displacementImage:
-          "https://raw.githubusercontent.com/robin-dela/hover-effect/master/images/fluid.jpg",
+        displacementImage: "texture.png",
         imagesRatio: 1.3,
       });
       setEffectmade(true);
