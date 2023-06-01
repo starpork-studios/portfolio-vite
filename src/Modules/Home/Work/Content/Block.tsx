@@ -9,7 +9,7 @@ const Block: React.FC<{ blockSection: BlockSection }> = ({ blockSection }) => {
   return (
     <div className=" flex flex-col font-body">
       <MotionWrapper direction={MotionFrom.Above} delay={0.6} isDark>
-        <h5 className=" text-5xl font-bold ">{heading}</h5>
+        <h5 className=" text-3xl md:text-5xl font-bold ">{heading}</h5>
       </MotionWrapper>
 
       <div className=" flex flex-col md:flex-row gap-[40px]  font-light ">
