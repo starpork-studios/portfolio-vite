@@ -49,20 +49,6 @@ export function CylinderImage(props: MeshImageProps) {
   useFrame((state, delta) => {
     colorMap.offset = new Vector2(zoom / 2, zoom / 2);
     colorMap.repeat = new Vector2(1 - zoom, 1 - zoom);
-    //const a = data.range(0, 1 / 3);
-    // Will start increasing when 1 / 3 of the scroll distance is reached,
-    // and reach 1 when it reaches 2 / 3rds.
-    //const b = data.range(1 / 3, 1 / 3);
-    // Same as above but with a margin of 0.1 on both ends
-    //const c = data.range(1 / 3, 1 / 3, 0.1);
-    // Will move between 0-1-0 for the selected range
-    //const d = data.curve(1 / 3, 1 / 3);
-    // Same as above, but with a margin of 0.1 on both ends
-    //const e = data.curve(1 / 3, 1 / 3, 0.1);
-    // Returns true if the offset is in range and false if it isn't
-    //const f = data.visible(2 / 3, 1 / 3);
-    // The visible function can also receive a margin
-    //const g = data.visible(2 / 3, 1 / 3, 0.1);
 
     state.raycaster.setFromCamera(state.mouse, camera);
 

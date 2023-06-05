@@ -36,8 +36,6 @@ export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
         0.05
       );
     }
-
-    //camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 0.5, 0), 0.07);
   });
 };
 function Home() {

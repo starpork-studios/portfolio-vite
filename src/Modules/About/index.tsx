@@ -64,8 +64,8 @@ const About = () => {
       className=" bg-[#f8f6f5]  md:py-[40px] md:px-[60px] 
     px-[30px] py-[20px] w-screen"
     >
-      <div className="flex md:flex-row flex-col mx-auto max-w-[1500px] gap-[60px]">
-        <div className=" flex flex-col font-body flex-grow  md:w-[50vw] mt-[150px] gap-[150px] md:gap-[300px] w-full">
+      <div className="flex md:flex-row flex-col mx-auto max-w-[1500px] gap-[60px] justify-between">
+        <div className=" flex flex-col font-body flex-grow  md:w-[50vw] mt-[150px] gap-[150px] md:gap-[300px] w-full max-w-[700px]">
           <div>
             <MotionWrapper direction={MotionFrom.Above} delay={0.6} isDark>
               <h1 className=" text-4xl md:text-7xl font-bold font-hatton">
@@ -80,10 +80,11 @@ const About = () => {
                   been working professionally for almost 6 years after
                   graduating from the University of Auckland in Software
                   Engineering. However, my coding journey began long before that
-                  at the age of 11, using some of Microsoft Powerpoint's
-                  features as a rudimentary programming language to make 2D
-                  games. When I reached Year 11 in Highschool, I took
-                  programming as a subject and from there the rest is history.
+                  at the age of 11. Using some of Microsoft Powerpoint's
+                  features as a rudimentary programming language, I created 2D
+                  games for my friends to play. That is where my passion for the
+                  craft of programming started and from there the rest is
+                  history.
                 </p>
               }
               delay={0.8}
@@ -122,17 +123,6 @@ const About = () => {
             />
           </div>
         </div>
-        {/*<MotionWrapper
-          direction={MotionFrom.Below}
-          delay={0.6}
-          isDark
-          className=" flex flex-col font-body md:w-[40vw] md:mt-[150px] sm:mt-[80px] items-end"
-        >
-          <img
-            src="jarrod.png"
-            className="sticky top-[90px] md:max-w-[500px] w-full"
-          />
-            </MotionWrapper>*/}
         <MotionWrapper
           direction={MotionFrom.Below}
           delay={0.6}
