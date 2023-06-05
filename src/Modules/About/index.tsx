@@ -76,8 +76,14 @@ const About = () => {
             <OverlineParagraph
               content={
                 <p className="font-light">
-                  Hi, I'm Jarrod, I'm a Frontend Engineer at Roam Digital, based
-                  in Auckland, New Zealand
+                  Hi, I'm Jarrod, I'm a Frontend Engineer at Roam Digital. I've
+                  been working professionally for almost 6 years after
+                  graduating from the University of Auckland in Software
+                  Engineering. However, my coding journey began long before that
+                  at the age of 11, using some of Microsoft Powerpoint's
+                  features as a rudimentary programming language to make 2D
+                  games. When I reached Year 11 in Highschool, I took
+                  programming as a subject and from there the rest is history.
                 </p>
               }
               delay={0.8}
