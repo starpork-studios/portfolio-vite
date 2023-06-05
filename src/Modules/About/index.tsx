@@ -64,8 +64,8 @@ const About = () => {
       className=" bg-[#f8f6f5]  md:py-[40px] md:px-[60px] 
     px-[30px] py-[20px] w-screen"
     >
-      <div className="flex md:flex-row flex-col mx-auto max-w-[1500px] gap-[60px]">
-        <div className=" flex flex-col font-body flex-grow  md:w-[50vw] mt-[150px] gap-[150px] md:gap-[300px] w-full">
+      <div className="flex md:flex-row flex-col mx-auto max-w-[1500px] gap-[60px] justify-between">
+        <div className=" flex flex-col font-body flex-grow  md:w-[50vw] mt-[150px] gap-[150px] md:gap-[300px] w-full max-w-[700px]">
           <div>
             <MotionWrapper direction={MotionFrom.Above} delay={0.6} isDark>
               <h1 className=" text-4xl md:text-7xl font-bold font-hatton">
