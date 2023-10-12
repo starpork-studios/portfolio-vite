@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Variants, motion, useAnimation, useInView } from "framer-motion";
-import { ContentItem } from "../content";
+import { ContentItem } from "./MyExperiences";
 
 const headings = (props?: { delay?: number }): Variants => {
   return {

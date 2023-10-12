@@ -4,7 +4,7 @@ import { ZoomedProps } from "../types";
 import Heading from "./Heading";
 import Info from "./Content";
 import ScrollIndictator from "./ScrollIndictator";
-import { ContentItem } from "../content";
+import { ContentItem } from "./MyExperiences";
 import text from "../../../components/Inputs/ArrowButton";
 import ArrowButton from "../../../components/Inputs/ArrowButton";
 import MotionWrapper from "../../../components/Animated/MotionWrapper";

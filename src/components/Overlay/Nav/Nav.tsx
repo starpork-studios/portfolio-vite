@@ -42,7 +42,7 @@ const Nav: React.FC = () => {
               direction={MotionFrom.Above}
               delay={1.7}
               isDark={isDark}
-              toggleColor={isHome ? undefined : "#898989"}
+              toggleColor={isHome ? "#898989" : undefined}
             >
               <p>Home</p>
             </MotionWrapper>
@@ -55,7 +55,7 @@ const Nav: React.FC = () => {
               direction={MotionFrom.Above}
               delay={1.8}
               isDark={isDark}
-              toggleColor={isAbout ? undefined : "#898989"}
+              toggleColor={isAbout ? "#898989" : undefined}
             >
               <p>About</p>
             </MotionWrapper>
