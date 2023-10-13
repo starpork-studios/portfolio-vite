@@ -5,7 +5,7 @@ import React, { forwardRef, RefObject, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { Group } from "three";
 import { ZoomedProps } from "../types";
-import { ContentItem } from "../content";
+import { ContentItem } from "../Work/MyExperiences";
 
 type SectionProps = {
   zoomed: ZoomedProps;

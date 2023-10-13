@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useScroll } from "@react-three/drei";
 import { CylinderImage } from "./CylinderImage";
 import { CarouselProps } from "./types";
-import { content } from "../content";
+import { content } from "../Work/MyExperiences";
 import { useScreenQueries } from "../../../hooks/useScreenQueries";
 const ROTATION_CONSTANT = 0.8;
 const MOBILE_ROTATION_CONSTANT = 0.55;

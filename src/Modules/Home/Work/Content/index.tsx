@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentItem } from "../../content";
+import { ContentItem } from "../MyExperiences";
 import Block from "./Block";
 import MotionWrapper from "../../../../components/Animated/MotionWrapper";
 import { MotionFrom } from "../../../../components/Animated/types";

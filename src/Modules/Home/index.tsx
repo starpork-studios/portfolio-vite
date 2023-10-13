@@ -8,7 +8,7 @@ import { createRef, useContext, useEffect, useRef, useState } from "react";
 import { ZoomedProps } from "./types";
 import Work from "./Work";
 import { motion } from "framer-motion";
-import { content } from "./content";
+import { content } from "./Work/MyExperiences";
 import { useScreenQueries } from "../../hooks/useScreenQueries";
 import { NavModeContext } from "../../NavModeProvider";
 import ShadowBorder from "../../components/Overlay/ShadowBorder/ShadowBorder";
