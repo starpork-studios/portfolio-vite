@@ -50,7 +50,7 @@ export const Fergus = {
               product managers, QA's and other software engineers. I've formed a
               great relationship with them and we've delivered some awesome
               features and improvements to the platform. I've also mentored
-              juniors developers, giving them guidance and watching them grow
+              junior developers, giving them guidance and watching them grow
               has been super rewarding.
             </p>
             <p>
