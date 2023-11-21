@@ -53,6 +53,7 @@ export const Fergus = {
               junior developers, giving them guidance and watching them grow
               has been super rewarding.
             </p>
+            <br />
             <p>
               I've been responsible for leading features by breaking down tasks,
               creating concise tickets for the team, facilitating
