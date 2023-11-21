@@ -13,11 +13,11 @@ const About = () => {
     { text: "TypeScript" },
     { text: "ReactJS" },
     { text: "NodeJS" },
-    { text: "GraphQl" },
+    { text: "GraphQL" },
+    { text: "React Native" },
     { text: "MaterialUI" },
     { text: "Playwright" },
     { text: "Jest" },
-    { text: "ThreeJS" },
     { text: "Framer Motion" },
     { text: "C++" },
     { text: "PHP" },
@@ -76,11 +76,11 @@ const About = () => {
             <OverlineParagraph
               content={
                 <p className="font-light">
-                  Hi, I'm Jarrod, I'm a Frontend Engineer at Roam Digital. I've
-                  been working professionally for almost 6 years after
-                  graduating from the University of Auckland in Software
+                  Hi, I'm Jarrod, I'm a Software Engineer at Fergus. I've
+                  been working professionally for 6 years after
+                  graduating from the University of Auckland with a degree in Software
                   Engineering. However, my coding journey began long before that
-                  at the age of 11. Using some of Microsoft Powerpoint's
+                  when I was a kid in intermediate school. Using some of Microsoft Powerpoint's
                   features as a rudimentary programming language, I created 2D
                   games for my friends to play. That is where my passion for the
                   craft of programming started and from there the rest is
@@ -93,7 +93,7 @@ const About = () => {
           <div>
             <MotionWrapper direction={MotionFrom.Above} delay={0.6} isDark>
               <h1 className=" text-2xl md:text-4xl font-bold font-hatton">
-                My Role
+                My Experience
               </h1>
             </MotionWrapper>
 
@@ -101,8 +101,8 @@ const About = () => {
               content={
                 <>
                   <p className="font-light mb-8">
-                    Working collaboratively with our clients to help them
-                    achieve their digital goals and needs. Developing web
+                    Working collaboratively with clients and within product teams to 
+                    achieve their digital goals and needs. Developing web and mobile
                     applications with a passion for beautiful products with
                     sustainable and elegant code architecture.
                   </p>
