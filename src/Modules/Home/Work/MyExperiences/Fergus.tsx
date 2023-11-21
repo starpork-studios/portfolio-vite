@@ -46,17 +46,18 @@ export const Fergus = {
         paragraphs: [
           <>
             <p>
-              As a Software Engineer within the Fergus Go team, made up of
-              designers, product managers, QA's and other software engineers,
-              I've formed a great relationship with them and we've delivered
-              some awesome features and improvements to the platform.
+              In late 2023 I joined the Fergus Go team made up of designers,
+              product managers, QA's and other software engineers. I've formed a
+              great relationship with them and we've delivered some awesome
+              features and improvements to the platform. I've also mentored
+              juniors developers, giving them guidance and watching them grow
+              has been super rewarding.
             </p>
             <p>
-              I've been responsible for leading feature developments - breaking
-              down tasks, creating concise tickets for the team, facilitating
-              discussions on feature architecture, developing solutions,
-              reviewing code and coordinating with the team to mitigate
-              blockers.
+              I've been responsible for leading features by breaking down tasks,
+              creating concise tickets for the team, facilitating
+              discussions on feature architecture, developing solutions, reviewing
+              code and coordinating with the team to mitigate blockers. 
             </p>
           </>,
           <>
@@ -82,7 +83,7 @@ export const Fergus = {
               Fergus Go has been growing in popularity as its feature set has
               expanded
             </p>
-            <p className="text-[56px] h-auto">5000+</p>
+            <p className="text-[56px] h-auto">3000+</p>
             <p>Daily users</p>
           </div>,
           <div>
