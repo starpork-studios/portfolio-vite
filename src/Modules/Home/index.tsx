@@ -50,6 +50,8 @@ function Home() {
       .fill(null)
       .map(() => createRef<HTMLElement>())
   );
+  const { sm } = useScreenQueries();
+
 
   const { setIsDark } = useContext(NavModeContext);
   useEffect(() => {
@@ -70,9 +72,10 @@ function Home() {
       >
         <Rig {...zoomed} />
         <ScrollControls
-          damping={0.3}
+        
+          damping={sm ? 0.1 : 0.3}
           pages={content.length}
-          distance={1.5} /* 1 page per photo*/
+          distance={sm ? 0.5 : 1.5} /* 1 page per photo*/
         >
           <>
             <ambientLight />

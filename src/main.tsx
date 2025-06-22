@@ -8,6 +8,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwind.config";
 import { NavModeProvider } from "./NavModeProvider";
 import { Content } from "./Content";
+import { PageViewTracker } from "./analytics";
 
 export const twConfig = resolveConfig(tailwindConfig);
 
@@ -17,6 +18,7 @@ export default function App() {
       <Noise />
       <motion.div className="h-full">
         <BrowserRouter>
+          <PageViewTracker />
           <Nav />
           <Content />
         </BrowserRouter>
