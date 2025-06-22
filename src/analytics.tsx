@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import ReactGA from "react-ga4";
 import { useLocation } from "react-router-dom";
-const isProd = true//  import.meta.env.PROD;
+const isProd = import.meta.env.PROD;
 
 if (isProd) {
   ReactGA.initialize("G-7QF6FPEPDN");
