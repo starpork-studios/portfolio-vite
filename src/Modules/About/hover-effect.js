@@ -270,11 +270,26 @@ void main() {
     });
   }
 
+  let isToggled = false;
+
+  function toggleTransition() {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      if (isToggled) {
+        transitionOut();
+      } else {
+        transitionIn();
+      }
+      isToggled = !isToggled;
+    } 
+    else {
+      isToggled = false
+    }
+  }
+
   if (userHover) {
+    parent.addEventListener("touchstart", toggleTransition);
     parent.addEventListener("mouseenter", transitionIn);
-    parent.addEventListener("touchstart", transitionIn);
     parent.addEventListener("mouseleave", transitionOut);
-    parent.addEventListener("touchend", transitionOut);
   }
 
   window.addEventListener("resize", function (e) {
