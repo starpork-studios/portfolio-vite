@@ -1,5 +1,6 @@
 # portfolio-vite
 
-My developer portfolio
+My Portfolio
+
 [Have a look
 ](https://www.jarrodvdh.com/)
