@@ -12,6 +12,7 @@ import { content } from "./Work/MyExperiences";
 import { useScreenQueries } from "../../hooks/useScreenQueries";
 import { NavModeContext } from "../../NavModeProvider";
 import ShadowBorder from "../../components/Overlay/ShadowBorder/ShadowBorder";
+import { useParams } from "react-router-dom";
 
 export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
   const { camera, mouse } = useThree();
@@ -20,7 +21,6 @@ export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
 
   return useFrame(() => {
     const z = camera.rotation.z;
-    const x = camera.rotation.x;
 
     if (isZoomed) {
       camera.position.lerp(vec.set(0, 0, 9), 0.07);
@@ -28,30 +28,44 @@ export const Rig: React.FC<ZoomedProps> = ({ isZoomed, page }) => {
     } else {
       camera.position.lerp(
         sm ? vec.set(0, 0, 0) : vec.set(mouse.x * 1, -mouse.y * 0.5, 0),
-        0.07
+        0.07,
       );
       camera.rotation.z = MathUtils.lerp(
         z,
         sm ? -Math.PI / 48 : -Math.PI / 48,
-        0.05
+        0.05,
       );
     }
   });
 };
 function Home() {
+  const { slug } = useParams();
+
+  const initialPage = slug
+    ? content.findIndex((item) => item.slug === slug)
+    : -1;
+
   const [zoomed, setZoomed] = useState<ZoomedProps>({
-    page: -1,
+    page: initialPage,
     previous: -1,
-    isZoomed: false,
+    isZoomed: initialPage >= 0,
   });
   const carouselRef = useRef<Group>(null!);
   const sectionRefs = useRef<Array<React.RefObject<HTMLElement>>>(
     Array(content.length)
       .fill(null)
-      .map(() => createRef<HTMLElement>())
+      .map(() => createRef<HTMLElement>()),
   );
   const { sm } = useScreenQueries();
 
+  useEffect(() => {
+    if (zoomed.isZoomed && zoomed.page >= 0) {
+      const item = content[zoomed.page];
+      window.history.replaceState(null, "", `/work/${item.slug}`);
+    } else if (!zoomed.isZoomed) {
+      window.history.replaceState(null, "", "/");
+    }
+  }, [zoomed.isZoomed, zoomed.page]);
 
   const { setIsDark } = useContext(NavModeContext);
   useEffect(() => {
@@ -62,6 +76,7 @@ function Home() {
     <motion.div className="w-full h-full overflow-auto ">
       <ShadowBorder visible={!zoomed.isZoomed} />
       <Canvas
+        className="!z-0"
         camera={{
           position: [-10, -90, -60], //change to y = 10 for horizontal
           fov: 40,
@@ -72,7 +87,6 @@ function Home() {
       >
         <Rig {...zoomed} />
         <ScrollControls
-        
           damping={sm ? 0.1 : 0.3}
           pages={content.length}
           distance={sm ? 0.5 : 1.5} /* 1 page per photo*/

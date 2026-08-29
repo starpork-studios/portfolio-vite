@@ -1,12 +1,13 @@
 export const Fergus = {
-  file: "fergus.png",
-  mobile: "fergus-mobile.png",
+  slug: "fergus",
+  file: "/fergus.png",
+  mobile: "/fergus-mobile.png",
   title: "Fergus",
   subtitle: "Fergus Go",
   page: {
     heading: "Fergus",
     year: "2023-24",
-    image: "Content/FERGUS-UI.png",
+    image: "/Content/FERGUS-UI.png",
     sections: [
       {
         heading: "Background",
@@ -50,15 +51,15 @@ export const Fergus = {
               product managers, QA's and other software engineers. I've formed a
               great relationship with them and we've delivered some awesome
               features and improvements to the platform. I've also mentored
-              junior developers, giving them guidance and watching them grow
-              has been super rewarding.
+              junior developers, giving them guidance and watching them grow has
+              been super rewarding.
             </p>
             <br />
             <p>
               I've been responsible for leading features by breaking down tasks,
-              creating concise tickets for the team, facilitating
-              discussions on feature architecture, developing solutions, reviewing
-              code and coordinating with the team to mitigate blockers. 
+              creating concise tickets for the team, facilitating discussions on
+              feature architecture, developing solutions, reviewing code and
+              coordinating with the team to mitigate blockers.
             </p>
           </>,
           <>
@@ -96,4 +97,5 @@ export const Fergus = {
       },
     ],
   },
+  component: undefined,
 };
