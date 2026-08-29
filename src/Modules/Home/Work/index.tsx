@@ -1,4 +1,4 @@
-import { motion, useScroll } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { ZoomedProps } from "../types";
 import Heading from "./Heading";
@@ -55,35 +55,70 @@ const Work: React.FC<{
 
     setIsScrolling(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
-    //ref.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  if (zoomed.page != index) return <></>;
+  const isActive = zoomed.page === index;
 
   return (
-    <>
-      <ScrollIndictator isVisible={showScrollHint} isGoingBack={isScrolling} />
-      <motion.div className="h-full w-full  absolute top-0 " ref={ref}>
-        <div className="h-full w-full" onClick={goBack}></div>
-        <div className=" bg-gray-200 flex justify-center align-middle">
-          <div className="flex flex-col px-[30px] md:px-[60px] md:pt-[90px] pt-[45px] md:pb-[60px] pb-[30px] w-full max-w-[1500px]">
-            <Heading workItem={item} />
-            <Info workItem={item} />
-            <MotionWrapper
-              direction={MotionFrom.Below}
-              delay={0.2}
-              className="ml-auto md:mt-[60px] mt-[30px]"
-            >
-              <ArrowButton
-                className=" font-body font-light"
-                onClick={goBack}
-                text="Back"
-              />
-            </MotionWrapper>
-          </div>
-        </div>
-      </motion.div>
-    </>
+    <AnimatePresence>
+      {isActive && (
+        <>
+          <ScrollIndictator
+            isVisible={showScrollHint}
+            isGoingBack={isScrolling}
+          />
+          <motion.div
+            className="h-full w-full absolute top-0 z-10"
+            ref={ref}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="h-full w-full relative" onClick={goBack}>
+              <motion.div
+                className="absolute bottom-0 left-0 right-0 h-1/3 flex items-end pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, transparent, rgb(229 231 235))",
+                }}
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  transition: { duration: 1.2, delay: 0.3, ease: "easeOut" },
+                }}
+                exit={{
+                  opacity: 0,
+                  transition: { duration: 0.25, ease: "easeIn" },
+                }}
+              >
+                <motion.div
+                  className="w-full max-w-[1500px] mx-auto px-[30px] md:px-[60px] pb-[30px] md:pb-[45px]"
+                  exit={{ y: 80, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeIn" }}
+                >
+                  <Heading workItem={item} />
+                </motion.div>
+              </motion.div>
+            </div>
+            <div className=" bg-gray-200 flex justify-center align-middle">
+              <div className="flex flex-col px-[30px] md:px-[60px] md:pt-[30px] pt-[15px] md:pb-[60px] pb-[30px] w-full max-w-[1500px]">
+                <Info workItem={item} />
+                <MotionWrapper
+                  direction={MotionFrom.Below}
+                  delay={0.2}
+                  className="ml-auto md:mt-[60px] mt-[30px]"
+                >
+                  <ArrowButton
+                    className=" font-body font-light"
+                    onClick={goBack}
+                    text="Back"
+                  />
+                </MotionWrapper>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 

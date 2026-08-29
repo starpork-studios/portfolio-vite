@@ -5,6 +5,11 @@ import MotionWrapper from "../../../../components/Animated/MotionWrapper";
 import { MotionFrom } from "../../../../components/Animated/types";
 
 const Content: React.FC<{ workItem: ContentItem }> = ({ workItem }) => {
+  if (workItem.component) {
+    const CustomComponent = workItem.component;
+    return <CustomComponent />;
+  }
+
   return (
     <div>
       <div className="flex flex-col  md:pt-[130px] pt-[40px] ml-auto lg:max-w-[980px] gap-[130px] ">

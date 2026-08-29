@@ -26,6 +26,7 @@ export function Content() {
     >
       <Routes location={displayLocation}>
         <Route path="/" element={<Home />} />
+        <Route path="work/:slug" element={<Home />} />
         <Route path="about" element={<About />} />
       </Routes>
     </div>

@@ -1,12 +1,13 @@
 export const LesMills = {
-  file: "lmi7.jpeg",
-  mobile: "lmi7mobile.jpeg",
+  slug: "les-mills",
+  file: "/lmi7.jpeg",
+  mobile: "/lmi7mobile.jpeg",
   title: "Les Mills",
   subtitle: "Connect",
   page: {
     heading: "Les Mills",
     year: "2022-23",
-    image: "Content/LMI-UI.png",
+    image: "/Content/LMI-UI.png",
     sections: [
       {
         heading: "Background",
@@ -73,4 +74,5 @@ export const LesMills = {
       },
     ],
   },
+  component: undefined,
 };

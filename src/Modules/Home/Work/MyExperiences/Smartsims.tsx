@@ -1,12 +1,13 @@
 export const Smartsims = {
-  file: "ss2.png",
-  mobile: "ss2mobile.png",
+  slug: "smartsims",
+  file: "/ss2.png",
+  mobile: "/ss2mobile.png",
   title: "Smartsims",
   subtitle: "MikesBikes",
   page: {
     heading: "Smartsims",
     year: "2017-22",
-    image: "Content/SS-UI.png",
+    image: "/Content/SS-UI.png",
     sections: [
       {
         heading: "Background",
@@ -80,4 +81,5 @@ export const Smartsims = {
       },
     ],
   },
+  component: undefined,
 };
